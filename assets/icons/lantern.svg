@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 240" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3D1"/>
+      <stop offset="25%" stop-color="#E5C378"/>
+      <stop offset="60%" stop-color="#C59B46"/>
+      <stop offset="90%" stop-color="#8F6A22"/>
+      <stop offset="100%" stop-color="#F7E6BE"/>
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C59B46"/>
+      <stop offset="100%" stop-color="#5A4112"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF7B8" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#FFC84A" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#E5A01A" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#E5A01A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lanternGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Hanging Chain -->
+  <line x1="50" y1="0" x2="50" y2="45" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="2,3"/>
+  <circle cx="50" cy="48" r="4" stroke="url(#goldGrad)" stroke-width="1.8" fill="none"/>
+  
+  <!-- Top Finial Ring & Spire -->
+  <path d="M50 52 L54 60 L46 60 Z" fill="url(#goldGrad)"/>
+  <path d="M50 60 C53 60, 56 63, 56 67 L44 67 C44 63, 47 60, 50 60 Z" fill="url(#goldGrad)"/>
+  <rect x="42" y="67" width="16" height="4" rx="2" fill="url(#goldGrad)"/>
+
+  <!-- Dome Roof -->
+  <path d="M50 71 C65 77, 72 88, 76 98 L24 98 C28 88, 35 77, 50 71 Z" fill="url(#goldGrad)" stroke="url(#goldDark)" stroke-width="1"/>
+  <!-- Dome Filigree Arches -->
+  <path d="M32 98 C35 88, 42 82, 50 80 C58 82, 65 88, 68 98" stroke="url(#goldDark)" stroke-width="1" fill="none"/>
+  <circle cx="50" cy="85" r="2.5" fill="url(#goldDark)"/>
+  
+  <!-- Middle Eaves Cresting -->
+  <path d="M22 98 L78 98 L80 102 L20 102 Z" fill="url(#goldGrad)"/>
+  <circle cx="26" cy="104" r="1.5" fill="url(#goldGrad)"/>
+  <circle cx="38" cy="104" r="1.5" fill="url(#goldGrad)"/>
+  <circle cx="50" cy="104" r="1.5" fill="url(#goldGrad)"/>
+  <circle cx="62" cy="104" r="1.5" fill="url(#goldGrad)"/>
+  <circle cx="74" cy="104" r="1.5" fill="url(#goldGrad)"/>
+
+  <!-- Inner Amber Glow -->
+  <circle cx="50" cy="142" r="32" fill="url(#lampGlow)" filter="url(#lanternGlow)"/>
+
+  <!-- Glass Body / Cage Framework -->
+  <polygon points="25,102 75,102 68,172 32,172" fill="#063B30" fill-opacity="0.25" stroke="url(#goldGrad)" stroke-width="1.5"/>
+
+  <!-- Moroccan Star / Jali Lattice on Glass -->
+  <path d="M50 110 L56 124 L70 124 L59 133 L63 147 L50 138 L37 147 L41 133 L30 124 L44 124 Z" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" stroke-opacity="0.85"/>
+  <path d="M35 112 C42 120, 58 120, 65 112" stroke="url(#goldGrad)" stroke-width="1" fill="none" stroke-opacity="0.7"/>
+  <path d="M36 162 C43 154, 57 154, 64 162" stroke="url(#goldGrad)" stroke-width="1" fill="none" stroke-opacity="0.7"/>
+
+  <!-- Candle Flame & Light Core -->
+  <ellipse cx="50" cy="145" rx="4" ry="9" fill="#FFFBE6"/>
+  <ellipse cx="50" cy="144" rx="2" ry="6" fill="#FFA500"/>
+  <line x1="50" y1="154" x2="50" y2="162" stroke="#684A1A" stroke-width="2"/>
+
+  <!-- Cage Vertical Ribs -->
+  <line x1="25" y1="102" x2="32" y2="172" stroke="url(#goldGrad)" stroke-width="2"/>
+  <line x1="42" y1="102" x2="44" y2="172" stroke="url(#goldGrad)" stroke-width="1.2"/>
+  <line x1="58" y1="102" x2="56" y2="172" stroke="url(#goldGrad)" stroke-width="1.2"/>
+  <line x1="75" y1="102" x2="68" y2="172" stroke="url(#goldGrad)" stroke-width="2"/>
+
+  <!-- Lower Base Rim -->
+  <rect x="30" y="172" width="40" height="5" rx="1.5" fill="url(#goldGrad)"/>
+  
+  <!-- Base Pedestal & Pendant -->
+  <path d="M34 177 L66 177 L54 192 L46 192 Z" fill="url(#goldGrad)"/>
+  <circle cx="50" cy="198" r="4" fill="url(#goldGrad)"/>
+  <path d="M50 202 L52 215 L48 215 Z" fill="url(#goldGrad)"/>
+  <circle cx="50" cy="218" r="2.5" fill="url(#goldGrad)"/>
+</svg>
+

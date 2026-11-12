@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="cornerGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3D1"/>
+      <stop offset="50%" stop-color="#D4AF62"/>
+      <stop offset="100%" stop-color="#8F6A22"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Corner Frame Lines -->
+  <path d="M4 80 L4 4 L80 4" stroke="url(#cornerGold)" stroke-width="2"/>
+  <path d="M12 70 L12 12 L70 12" stroke="url(#cornerGold)" stroke-width="1" stroke-opacity="0.7"/>
+
+  <!-- Ornate Islamic Arabesque Scrollwork -->
+  <path d="M16 16 C28 20, 36 28, 40 40 C32 36, 20 28, 16 16 Z" fill="url(#cornerGold)" opacity="0.85"/>
+  <path d="M22 22 Q48 18, 56 4 Q38 32, 22 22 Z" fill="url(#cornerGold)" opacity="0.75"/>
+  <path d="M22 22 Q18 48, 4 56 Q32 38, 22 22 Z" fill="url(#cornerGold)" opacity="0.75"/>
+
+  <!-- Corner 8-Pointed Star Accent -->
+  <g transform="translate(24, 24)">
+    <rect x="-4" y="-4" width="8" height="8" fill="url(#cornerGold)" rx="0.5"/>
+    <rect x="-4" y="-4" width="8" height="8" fill="url(#cornerGold)" rx="0.5" transform="rotate(45)"/>
+  </g>
+</svg>
+

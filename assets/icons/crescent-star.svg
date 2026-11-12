@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="crescentGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5D6"/>
+      <stop offset="35%" stop-color="#E5C378"/>
+      <stop offset="70%" stop-color="#D4AF62"/>
+      <stop offset="100%" stop-color="#8C6824"/>
+    </linearGradient>
+    <filter id="moonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Glowing Crescent Moon -->
+  <path d="M72 15 C45 22, 28 46, 30 75 C32 98, 52 115, 78 111 C60 106, 48 92, 47 74 C46 54, 57 33, 72 15 Z" 
+        fill="url(#crescentGold)" filter="url(#moonGlow)"/>
+
+  <!-- 8-Pointed Star (Rub el Hizb) nestled in the crescent's arms -->
+  <g transform="translate(68, 52)" filter="url(#moonGlow)">
+    <!-- Outer Rotated Squares forming 8-pointed star -->
+    <rect x="-10" y="-10" width="20" height="20" fill="url(#crescentGold)" rx="1.5"/>
+    <rect x="-10" y="-10" width="20" height="20" fill="url(#crescentGold)" rx="1.5" transform="rotate(45)"/>
+    <circle cx="0" cy="0" r="4.5" fill="#063B30"/>
+    <circle cx="0" cy="0" r="2.5" fill="url(#crescentGold)"/>
+  </g>
+
+  <!-- Sparkling starlight glints -->
+  <circle cx="95" cy="30" r="1.5" fill="#FFF8E7" opacity="0.9"/>
+  <circle cx="85" cy="85" r="1.2" fill="#FFF8E7" opacity="0.8"/>
+  <circle cx="22" cy="40" r="1" fill="#FFF8E7" opacity="0.7"/>
+</svg>
+

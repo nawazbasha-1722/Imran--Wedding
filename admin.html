@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Administration Desk | Shaik Imran &amp; Shaik Saniya</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. SECURITY PIN LOGIN GATE
+       ========================================== -->
+  <div id="adminLoginGate" aria-label="Admin Security Gate">
+    <div class="login-card">
+      <div class="login-crest">
+        <span>IS</span>
+      </div>
+      <h2 class="login-title">Administration Desk</h2>
+      <p class="login-subtitle">Shaik Imran &amp; Shaik Saniya • Royal Wedding Portal</p>
+
+      <form id="adminPinForm">
+        <div class="login-input-group">
+          <label for="adminPinInput">Enter Master Access PIN</label>
+          <input 
+            type="password" 
+            id="adminPinInput" 
+            class="login-input" 
+            placeholder="••••" 
+            maxlength="10" 
+            autocomplete="current-password"
+            required>
+        </div>
+        <button type="submit" class="btn-login-submit">Unlock Admin Desk</button>
+      </form>
+
+      <div class="login-hint">
+        Default Master PIN: <code id="defaultPinHint" title="Click to auto-fill">1314</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       2. TOP NAVIGATION & HEADER
+       ========================================== -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand">
+        <div class="brand-crest">
+          <span>IS</span>
+        </div>
+        <div class="brand-text">
+          <h1>Wedding Administration Desk</h1>
+          <p>Shaik Imran &amp; Shaik Saniya • 13–14 December 2026</p>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Live Sync Active</span>
+        </div>
+        <a href="index.html" target="_blank" rel="noopener" class="btn-header-action outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          View Live Website
+        </a>
+        <button class="btn-header-action primary" onclick="saveAllAdminData()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+          Save All Changes
+        </button>
+        <button id="btnLogout" class="btn-header-action danger" title="Sign out of Admin Desk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       3. MAIN ADMIN WORKSPACE & TABS
+       ========================================== -->
+  <main class="admin-main">
+    <!-- Tabs Navigation Bar -->
+    <nav class="admin-tabs-nav" aria-label="Admin Navigation Tabs">
+      <button class="btn-admin-tab active" onclick="switchAdminTab('tabDetails', this)">
+        <span>💍</span> Wedding Details &amp; Events
+      </button>
+      <button class="btn-admin-tab" onclick="switchAdminTab('tabPhotos', this)">
+        <span>📸</span> Ceremony &amp; Gallery Photos
+      </button>
+      <button class="btn-admin-tab" onclick="switchAdminTab('tabDuas', this)">
+        <span>💌</span> Guest Duas &amp; Wishes
+      </button>
+      <button class="btn-admin-tab" onclick="switchAdminTab('tabSettings', this)">
+        <span>⚙</span> Settings &amp; Backup
+      </button>
+    </nav>
+
+    <!-- ==========================================
+         TAB 1: WEDDING DETAILS & EVENTS
+         ========================================== -->
+    <section id="tabDetails" class="tab-pane active">
+      <!-- Couple Names & Tagline -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>👑</span> Couple Information</h2>
+            <p class="admin-card-desc">Updates the names across the Hero, Navigation, Royal Scroll decree, and Wedding title.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="groomName">Groom Full Name</label>
+            <input type="text" id="groomName" class="form-input" placeholder="Shaik Imran">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="brideName">Bride Full Name</label>
+            <input type="text" id="brideName" class="form-input" placeholder="Shaik Saniya">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="weddingTagline">Romantic Tagline</label>
+            <input type="text" id="weddingTagline" class="form-input" placeholder="Two hearts, one beautiful journey.">
+          </div>
+        </div>
+      </div>
+
+      <!-- Haldi Ceremony Event Card -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>🌼</span> Event 01: Haldi &amp; Mayun Ceremony</h2>
+            <p class="admin-card-desc">Configure timings, date format, and description displayed on the Event 01 card.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="haldiDate">Event Date</label>
+            <input type="text" id="haldiDate" class="form-input" placeholder="Sunday, 13 December 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="haldiTime">Event Time</label>
+            <input type="text" id="haldiTime" class="form-input" placeholder="10:00 PM Onwards">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="haldiVenue">Venue Note for Haldi</label>
+            <input type="text" id="haldiVenue" class="form-input" placeholder="At Our Residence, Kangala Village, Bapatla District">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="haldiDesc">Event Description</label>
+            <textarea id="haldiDesc" class="form-textarea" placeholder="A radiant evening of joyous turmeric blessings..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nikah Ceremony Event Card -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>🕌</span> Event 02: Auspicious Nikah Ceremony</h2>
+            <p class="admin-card-desc">Configure timings, date format, and description displayed on the Event 02 card.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="nikahDate">Event Date</label>
+            <input type="text" id="nikahDate" class="form-input" placeholder="Monday, 14 December 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nikahTime">Event Time</label>
+            <input type="text" id="nikahTime" class="form-input" placeholder="9:00 AM">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="nikahVenue">Venue Note for Nikah</label>
+            <input type="text" id="nikahVenue" class="form-input" placeholder="At Our Residence, Kangala Village, Bapatla District">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="nikahDesc">Event Description</label>
+            <textarea id="nikahDesc" class="form-textarea" placeholder="The sacred solemnization of Nikah where two souls enter into a holy covenant..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Venue & Navigation -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>📍</span> Venue Location &amp; Travel Assistance</h2>
+            <p class="admin-card-desc">Set the official address lines, nearest railway station, and Google Maps URL.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="venueResidence">Venue Name</label>
+            <input type="text" id="venueResidence" class="form-input" placeholder="At Our Residence">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addressLine1">Address Line 1</label>
+            <input type="text" id="addressLine1" class="form-input" placeholder="Kangala Village">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addressLine2">District / Region</label>
+            <input type="text" id="addressLine2" class="form-input" placeholder="Bapatla District">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addressLine3">State &amp; Country</label>
+            <input type="text" id="addressLine3" class="form-input" placeholder="Andhra Pradesh, India.">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="railwayStation">Nearest Railway Station</label>
+            <input type="text" id="railwayStation" class="form-input" placeholder="Bhattiprolu Railway Station">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mapsUrl">Google Maps Link</label>
+            <input type="url" id="mapsUrl" class="form-input" placeholder="https://maps.app.goo.gl/do8WPFCzZCyU77vG6">
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Countdown Target & Secret Messages -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>⏱</span> Live Countdown &amp; Surprise Messages</h2>
+            <p class="admin-card-desc">Controls the flip-clock live countdown target and custom interactive notes.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="countdownTargetISO">Countdown Target Timestamp (IST)</label>
+            <input type="datetime-local" id="countdownTargetISO" class="form-input" value="2026-12-13T22:00">
+            <p class="form-helper">The flip clock will tick down live towards this exact date and time.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="surpriseMessage">Secret Gift Box Revealed Note</label>
+            <textarea id="surpriseMessage" class="form-textarea" placeholder="Your presence is the greatest gift we could ask for."></textarea>
+            <p class="form-helper">Revealed when guests tap the glowing 3D velvet gift box.</p>
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="decreeMessage">Royal Scroll Parchment Custom Decree</label>
+            <textarea id="decreeMessage" class="form-textarea" placeholder="With the solemn decree and divine blessings of Allah..."></textarea>
+            <p class="form-helper">Displayed when guests unfurl the royal scroll on the invitation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: CEREMONY & GALLERY PHOTOS
+         ========================================== -->
+    <section id="tabPhotos" class="tab-pane">
+      <!-- Core Website Ceremony Covers -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>🖼</span> Core Website Ceremony Photos</h2>
+            <p class="admin-card-desc">Replace default royal illustrations with actual photographs from your ceremonies or pre-wedding shoots.</p>
+          </div>
+        </div>
+
+        <div class="photo-cards-grid">
+          <!-- Hero Couple Photo -->
+          <div class="photo-manager-card">
+            <div class="photo-preview-box">
+              <img id="previewHeroImg" src="assets/images/couple-arch.jpg" alt="Hero Couple Preview" class="photo-preview-img">
+            </div>
+            <div class="photo-card-info">
+              <h3 class="photo-card-title">Hero Couple Portrait</h3>
+              <p class="photo-card-slot">Section 4 • Top of invitation</p>
+              <div class="photo-upload-controls">
+                <label class="file-dropzone" for="uploadHeroInput">
+                  <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                  <p>Click or Drop Photo Here</p>
+                  <input type="file" id="uploadHeroInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload('hero', this)">
+                </label>
+                <button class="btn-photo-action" onclick="resetPhotoToDefault('hero')">Reset to Default Illustration</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Haldi Ceremony Cover -->
+          <div class="photo-manager-card">
+            <div class="photo-preview-box">
+              <img id="previewHaldiImg" src="assets/images/haldi-ceremony.jpg" alt="Haldi Preview" class="photo-preview-img">
+            </div>
+            <div class="photo-card-info">
+              <h3 class="photo-card-title">Haldi Ceremony Cover</h3>
+              <p class="photo-card-slot">Section 7 • Event 01 Card</p>
+              <div class="photo-upload-controls">
+                <label class="file-dropzone" for="uploadHaldiInput">
+                  <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                  <p>Click or Drop Photo Here</p>
+                  <input type="file" id="uploadHaldiInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload('haldi', this)">
+                </label>
+                <button class="btn-photo-action" onclick="resetPhotoToDefault('haldi')">Reset to Default Illustration</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nikah Ceremony Cover -->
+          <div class="photo-manager-card">
+            <div class="photo-preview-box">
+              <img id="previewNikahImg" src="assets/images/nikah-ceremony.jpg" alt="Nikah Preview" class="photo-preview-img">
+            </div>
+            <div class="photo-card-info">
+              <h3 class="photo-card-title">Nikah Ceremony Cover</h3>
+              <p class="photo-card-slot">Section 7 • Event 02 Card</p>
+              <div class="photo-upload-controls">
+                <label class="file-dropzone" for="uploadNikahInput">
+                  <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                  <p>Click or Drop Photo Here</p>
+                  <input type="file" id="uploadNikahInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload('nikah', this)">
+                </label>
+                <button class="btn-photo-action" onclick="resetPhotoToDefault('nikah')">Reset to Default Illustration</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mosque Background -->
+          <div class="photo-manager-card">
+            <div class="photo-preview-box">
+              <img id="previewMosqueImg" src="assets/images/hero-mosque-bg.jpg" alt="Mosque Bg Preview" class="photo-preview-img">
+            </div>
+            <div class="photo-card-info">
+              <h3 class="photo-card-title">Mosque Backdrop</h3>
+              <p class="photo-card-slot">Background &amp; Memories Teaser</p>
+              <div class="photo-upload-controls">
+                <label class="file-dropzone" for="uploadMosqueInput">
+                  <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                  <p>Click or Drop Photo Here</p>
+                  <input type="file" id="uploadMosqueInput" accept="image/*" style="display:none;" onchange="handlePhotoUpload('mosque', this)">
+                </label>
+                <button class="btn-photo-action" onclick="resetPhotoToDefault('mosque')">Reset to Default Illustration</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post-Wedding Memories Album Vault -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>🌟</span> Post-Wedding Memories Gallery (Album Vault)</h2>
+            <p class="admin-card-desc">After the wedding, upload real high-res family photos to transform the invitation into an enduring digital album.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label class="form-label" style="margin: 0;" for="toggleAlbumStatus">Album Status:</label>
+            <input type="checkbox" id="toggleAlbumStatus" style="width: 20px; height: 20px; accent-color: var(--color-gold-metallic); cursor: pointer;">
+            <span id="albumStatusLabel" style="font-size: 0.82rem; font-weight: 600;">Locked</span>
+          </div>
+        </div>
+
+        <!-- Add New Memory Item Form -->
+        <form onsubmit="addNewMemoryItem(event)" style="background: rgba(6, 59, 48, 0.2); padding: 1.5rem; border-radius: 8px; border: 1px dashed rgba(212, 175, 98, 0.35); margin-bottom: 2rem;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--color-gold-light); margin-bottom: 1rem;">Add New Photo to Album</h3>
+          
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label class="form-label" for="newMemTitle">Photo Title *</label>
+              <input type="text" id="newMemTitle" class="form-input" placeholder="e.g. Haldi Turmeric Blessing" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newMemCategory">Category</label>
+              <select id="newMemCategory" class="form-select">
+                <option value="haldi">Haldi Moments</option>
+                <option value="nikah">Nikah Ceremony</option>
+                <option value="film">Cinematic Films</option>
+                <option value="candid">Candid Highlights</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newMemDate">Date Tag / Label</label>
+              <input type="text" id="newMemDate" class="form-input" placeholder="e.g. 13 Dec 2026">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label" for="newMemDesc">Caption / Description</label>
+              <input type="text" id="newMemDesc" class="form-input" placeholder="Brief heartfelt note about this moment...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newMemFile">Upload Photo File</label>
+              <input type="file" id="newMemFile" accept="image/*" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="newMemUrl">Or Paste Image URL</label>
+              <input type="url" id="newMemUrl" class="form-input" placeholder="https://...">
+            </div>
+            <div class="form-group" style="display: flex; align-items: flex-end;">
+              <button type="submit" class="btn-header-action primary" style="width: 100%; height: 42px; justify-content: center;">
+                + Add Photo to Album
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Current Memories Items Grid -->
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-gold-light); margin-bottom: 1rem;">Current Photos in Album</h3>
+        <div id="adminMemoriesGrid" class="memories-admin-grid">
+          <!-- Dynamically populated by js/admin.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: GUEST DUAS & BLESSINGS
+         ========================================== -->
+    <section id="tabDuas" class="tab-pane">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>💌</span> Guest Duas &amp; Wishes Moderation</h2>
+            <p class="admin-card-desc">Review, moderate, and export heartfelt prayers sent by your loved ones through the invitation website.</p>
+          </div>
+          <div style="display: flex; gap: 0.8rem;">
+            <button class="btn-header-action outline" onclick="exportDuasCSV()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Export to CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="duas-stats-row">
+          <div class="stat-box">
+            <div class="stat-value" id="duasCount">0</div>
+            <div class="stat-label">Total Duas Received</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="color: #2ecc71;">Active</div>
+            <div class="stat-label">Guestbook Status</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" style="font-size: 1.6rem;">LocalStorage</div>
+            <div class="stat-label">Database Storage</div>
+          </div>
+        </div>
+
+        <div class="duas-table-container">
+          <table class="duas-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Sender &amp; Relation</th>
+                <th>Dua &amp; Message</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="duasTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: SETTINGS & BACKUP
+         ========================================== -->
+    <section id="tabSettings" class="tab-pane">
+      <!-- Master PIN Management -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>🔐</span> Security &amp; Master Access PIN</h2>
+            <p class="admin-card-desc">Change the security PIN used to access this wedding administration portal.</p>
+          </div>
+        </div>
+
+        <form onsubmit="changeMasterPIN(event)" class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="currentPIN">Current Master PIN</label>
+            <input type="password" id="currentPIN" class="form-input" placeholder="••••" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newPIN">New PIN (4+ digits)</label>
+            <input type="password" id="newPIN" class="form-input" placeholder="••••" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="confirmNewPIN">Confirm New PIN</label>
+            <input type="password" id="confirmNewPIN" class="form-input" placeholder="••••" required>
+          </div>
+          <div class="form-group full-width">
+            <button type="submit" class="btn-header-action primary">Update Master PIN</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Backup & Restore -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h2 class="admin-card-title"><span>💾</span> Data Backup &amp; Portability</h2>
+            <p class="admin-card-desc">Save a complete snapshot of your wedding configuration and guest duas to a local JSON file.</p>
+          </div>
+        </div>
+
+        <div class="backup-actions-grid">
+          <div class="backup-action-box">
+            <div class="backup-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            </div>
+            <h3 class="backup-title">Download JSON Backup</h3>
+            <p class="backup-desc">Export all current wedding details, ceremony photos, album items, and guest duas into a single backup file.</p>
+            <button class="btn-header-action primary" onclick="downloadBackupJSON()" style="width: 100%; justify-content: center;">
+              Download Backup (.json)
+            </button>
+          </div>
+
+          <div class="backup-action-box">
+            <div class="backup-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+            </div>
+            <h3 class="backup-title">Restore from Backup</h3>
+            <p class="backup-desc">Upload a previously saved .json backup file to instantly restore your wedding configuration on another device.</p>
+            <label class="btn-header-action outline" style="width: 100%; justify-content: center; cursor: pointer;">
+              Upload Backup File
+              <input type="file" accept=".json" style="display:none;" onchange="handleBackupImport(this)">
+            </label>
+          </div>
+
+          <div class="backup-action-box" style="border-color: rgba(231, 76, 60, 0.4);">
+            <div class="backup-icon" style="color: #ff7675; background: rgba(231, 76, 60, 0.15);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            </div>
+            <h3 class="backup-title" style="color: #ff7675;">Reset to Defaults</h3>
+            <p class="backup-desc">Revert all changes and restore original details and illustrations for Shaik Imran &amp; Shaik Saniya.</p>
+            <button class="btn-header-action danger" onclick="resetToFactoryDefaults()" style="width: 100%; justify-content: center;">
+              Reset All Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="adminToast"></div>
+
+  <!-- Admin Desk Script -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
+
